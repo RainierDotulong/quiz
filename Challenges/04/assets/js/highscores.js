@@ -1,6 +1,8 @@
-var highScoresList = document.querySelector('#highScoresList')
-var scores = JSON.parse(localStorage.getItem('score'))
-
-var list = JSON.stringify(highScores)
-console.log(list)
-highScoresList.innerHTML = `<li>${highScores['name']} --- ${highScores['score']}</li>`
+var highScoresList = document.getElementById('highScoresList')
+var scores = JSON.parse(localStorage.getItem('highScores'))
+console.log(scores)
+highScoresList.innerHTML = scores
+	.map((score) => {
+		return `<li class="high-score">${score.name} - ${score.score}</li>`
+	})
+	.join('')

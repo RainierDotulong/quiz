@@ -5,6 +5,19 @@ var finalScore = document.querySelector('#finalScore')
 var mostRecentScore = localStorage.getItem('mostRecentScore')
 finalScore.innerHTML = mostRecentScore
 
-saveScoreBtn.addEventListener('click', function () {})
+var highScores = JSON.parse(localStorage.getItem('highScores')) || []
+console.log(highScores)
 
-showScoreBtn.addEventListener('click', function () {})
+localStorage.setItem('highScores', JSON.stringify([]))
+
+saveHighScore = (e) => {
+	console.log('clicked saved button')
+	e.preventDefault()
+	const score = {
+		score: mostRecentScore,
+		name: username.value,
+	}
+	highScores.push(score)
+
+	localStorage.setItem('highScores', JSON.stringify(highScores))
+}
